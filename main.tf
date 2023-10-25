@@ -98,7 +98,7 @@ resource "aws_cloudwatch_metric_alarm" "database_cpu" {
   threshold           = var.alarm_cpu_threshold
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.postgresql.id
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
   }
 
   alarm_actions             = var.alarm_actions
@@ -118,7 +118,7 @@ resource "aws_cloudwatch_metric_alarm" "database_disk_queue" {
   threshold           = var.alarm_disk_queue_threshold
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.postgresql.id
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
   }
 
   alarm_actions             = var.alarm_actions
@@ -138,7 +138,7 @@ resource "aws_cloudwatch_metric_alarm" "database_disk_free" {
   threshold           = var.alarm_free_disk_threshold
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.postgresql.id
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
   }
 
   alarm_actions             = var.alarm_actions
@@ -158,7 +158,7 @@ resource "aws_cloudwatch_metric_alarm" "database_memory_free" {
   threshold           = var.alarm_free_memory_threshold
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.postgresql.id
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
   }
 
   alarm_actions             = var.alarm_actions
@@ -181,7 +181,7 @@ resource "aws_cloudwatch_metric_alarm" "database_cpu_credits" {
   threshold           = var.alarm_cpu_credit_balance_threshold
 
   dimensions = {
-    DBInstanceIdentifier = aws_db_instance.postgresql.id
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
   }
 
   alarm_actions             = var.alarm_actions
