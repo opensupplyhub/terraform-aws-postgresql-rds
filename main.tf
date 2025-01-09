@@ -52,13 +52,15 @@ resource "aws_db_instance" "postgresql" {
   instance_class                  = var.instance_type
   storage_type                    = var.storage_type
   iops                            = var.iops
-  db_name                            = var.database_name
+  db_name                         = var.database_name
   password                        = var.database_password
   username                        = var.database_username
   backup_retention_period         = var.backup_retention_period
   backup_window                   = var.backup_window
   maintenance_window              = var.maintenance_window
   auto_minor_version_upgrade      = var.auto_minor_version_upgrade
+  allow_major_version_upgrade     = var.allow_major_version_upgrade
+  apply_immediately               = var.apply_immediately
   final_snapshot_identifier       = var.final_snapshot_identifier
   skip_final_snapshot             = var.skip_final_snapshot
   copy_tags_to_snapshot           = var.copy_tags_to_snapshot
