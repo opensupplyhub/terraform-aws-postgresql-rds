@@ -104,13 +104,13 @@ variable "auto_minor_version_upgrade" {
 }
 
 variable "allow_major_version_upgrade" {
-  default     = false
+  default     = true
   type        = bool
   description = "Indicates that major PostgreSQL engine version upgrades are allowed."
 }
 
 variable "apply_immediately" {
-  default     = false
+  default     = true
   type        = bool
   description = "Specifies whether any database modifications are applied immediately, or during the next maintenance window."
 }
