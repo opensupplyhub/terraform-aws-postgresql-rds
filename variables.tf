@@ -17,7 +17,7 @@ variable "allocated_storage" {
 }
 
 variable "engine_version" {
-  default     = "11.5"
+  default     = "13"
   type        = string
   description = "Database engine version"
 }
@@ -103,6 +103,18 @@ variable "auto_minor_version_upgrade" {
   description = "Minor engine upgrades are applied automatically to the DB instance during the maintenance window"
 }
 
+variable "allow_major_version_upgrade" {
+  default     = false
+  type        = bool
+  description = "Indicates that major PostgreSQL engine version upgrades are allowed."
+}
+
+variable "apply_immediately" {
+  default     = false
+  type        = bool
+  description = "Specifies whether any database modifications are applied immediately, or during the next maintenance window."
+}
+
 variable "final_snapshot_identifier" {
   default     = "terraform-aws-postgresql-rds-snapshot"
   type        = string
@@ -157,7 +169,7 @@ variable "subnet_group" {
 }
 
 variable "parameter_group" {
-  default     = "default.postgres11"
+  default     = "default.postgres13"
   type        = string
   description = "Database engine parameter group"
 }

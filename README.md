@@ -11,7 +11,7 @@ module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
   vpc_id = "vpc-20f74844"
   allocated_storage = "32"
-  engine_version = "9.4.4"
+  engine_version = "13.15"
   instance_type = "db.t2.micro"
   storage_type = "gp2"
   database_identifier = "jl23kj32sdf"
@@ -23,6 +23,8 @@ module "postgresql_rds" {
   backup_window = "04:00-04:30"
   maintenance_window = "sun:04:30-sun:05:30"
   auto_minor_version_upgrade = false
+  allow_major_version_upgrade = false
+  apply_immediately = false
   multi_availability_zone = true
   storage_encrypted = false
   subnet_group = aws_db_subnet_group.default.name
@@ -62,7 +64,7 @@ If you're curious to know more, see the discussion within https://github.com/ter
 - `project` - Name of project this VPC is meant to house (default: `Unknown`)
 - `environment` - Name of environment this VPC is targeting (default: `Unknown`)
 - `allocated_storage` - Storage allocated to database instance (default: `32`)
-- `engine_version` - Database engine version (default: `11.5`)
+- `engine_version` - Database engine version (default: `13`)
 - `instance_type` - Instance type for database instance (default: `db.t3.micro`)
 - `storage_type` - Type of underlying storage for database (default: `gp2`)
 - `iops` - The amount of provisioned IOPS. Setting this implies a `storage_type` of `io1` (default: `0`)
@@ -80,6 +82,8 @@ If you're curious to know more, see the discussion within https://github.com/ter
   (default: `sun:04:30-sun:05:30`)
 - `auto_minor_version_upgrade` - Minor engine upgrades are applied automatically
  to the DB instance during the maintenance window (default: `true`)
+- `allow_major_version_upgrade` - Indicates that major PostgreSQL engine version upgrades are allowed (default: `false`).
+- `apply_immediately` - Specifies whether any database modifications are applied immediately, or during the next maintenance window (default: `false`).
 - `final_snapshot_identifier` - Identifier for final snapshot if `skip_final_snapshot` is set to `false` (default: `terraform-aws-postgresql-rds-snapshot`)
 - `skip_final_snapshot` - Flag to enable or disable a snapshot if the database instance is terminated (default: `true`)
 - `copy_tags_to_snapshot` - Flag to enable or disable copying instance tags to the final snapshot (default: `false`)
@@ -91,7 +95,7 @@ If you're curious to know more, see the discussion within https://github.com/ter
 - `cloudwatch_logs_exports` - List of logs to publish to CloudWatch Logs. See [all](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.PostgreSQL.html#USER_LogAccess.PostgreSQL.PublishtoCloudWatchLogs) available options. (default: `["postgresql, "upgrade"]`)
 - `subnet_group` - Database subnet group
 - `parameter_group` - Database engine parameter group (default:
-  `default.postgres11`)
+  `default.postgres13`)
 - `alarm_cpu_threshold` - CPU alarm threshold as a percentage (default: `75`)
 - `alarm_disk_queue_threshold` - Disk queue alarm threshold (default: `10`)
 - `alarm_free_disk_threshold` - Free disk alarm threshold in bytes (default: `5000000000`)
