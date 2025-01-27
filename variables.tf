@@ -17,7 +17,7 @@ variable "allocated_storage" {
 }
 
 variable "engine_version" {
-  default     = "13"
+  default     = "17"
   type        = string
   description = "Database engine version"
 }
@@ -169,7 +169,7 @@ variable "subnet_group" {
 }
 
 variable "parameter_group" {
-  default     = "default.postgres13"
+  default     = "default.postgres17"
   type        = string
   description = "Database engine parameter group"
 }
