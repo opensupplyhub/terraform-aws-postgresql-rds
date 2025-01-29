@@ -11,7 +11,7 @@ module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
   vpc_id = "vpc-20f74844"
   allocated_storage = "32"
-  engine_version = "13.15"
+  engine_version = "16.3"
   instance_type = "db.t2.micro"
   storage_type = "gp2"
   database_identifier = "jl23kj32sdf"
@@ -64,7 +64,7 @@ If you're curious to know more, see the discussion within https://github.com/ter
 - `project` - Name of project this VPC is meant to house (default: `Unknown`)
 - `environment` - Name of environment this VPC is targeting (default: `Unknown`)
 - `allocated_storage` - Storage allocated to database instance (default: `32`)
-- `engine_version` - Database engine version (default: `13`)
+- `engine_version` - Database engine version (default: `16`)
 - `instance_type` - Instance type for database instance (default: `db.t3.micro`)
 - `storage_type` - Type of underlying storage for database (default: `gp2`)
 - `iops` - The amount of provisioned IOPS. Setting this implies a `storage_type` of `io1` (default: `0`)
@@ -95,7 +95,7 @@ If you're curious to know more, see the discussion within https://github.com/ter
 - `cloudwatch_logs_exports` - List of logs to publish to CloudWatch Logs. See [all](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.PostgreSQL.html#USER_LogAccess.PostgreSQL.PublishtoCloudWatchLogs) available options. (default: `["postgresql, "upgrade"]`)
 - `subnet_group` - Database subnet group
 - `parameter_group` - Database engine parameter group (default:
-  `default.postgres13`)
+  `default.postgres16`)
 - `alarm_cpu_threshold` - CPU alarm threshold as a percentage (default: `75`)
 - `alarm_disk_queue_threshold` - Disk queue alarm threshold (default: `10`)
 - `alarm_free_disk_threshold` - Free disk alarm threshold in bytes (default: `5000000000`)
