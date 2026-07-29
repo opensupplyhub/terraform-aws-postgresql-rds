@@ -16,10 +16,6 @@
   (both default `false`).
 - Upgrade default PostgreSQL engine version from 11.5 to 13 and default
   parameter group from `default.postgres11` to `default.postgres13`.
-- Rename deprecated `name` argument to `db_name` on `aws_db_instance`.
-- Use `aws_db_instance.postgresql.identifier` for CloudWatch alarm
-  dimensions instead of `id`.
-- Raise the AWS provider requirement from `>= 2.33.0` to `>= 3.0.0`.
 
 ## 3.0.0
 
