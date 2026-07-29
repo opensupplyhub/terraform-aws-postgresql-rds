@@ -37,6 +37,7 @@ module "postgresql_rds" {
   alarm_disk_queue_threshold = "10"
   alarm_free_disk_threshold = "5000000000"
   alarm_free_memory_threshold = "128000000"
+  alarm_database_connections_threshold = "90"
   alarm_actions = ["arn:aws:sns..."]
   ok_actions = ["arn:aws:sns..."]
   insufficient_data_actions = ["arn:aws:sns..."]
@@ -101,6 +102,7 @@ If you're curious to know more, see the discussion within https://github.com/ter
 - `alarm_free_disk_threshold` - Free disk alarm threshold in bytes (default: `5000000000`)
 - `alarm_free_memory_threshold` - Free memory alarm threshold in bytes (default: `128000000`)
 - `alarm_cpu_credit_balance_threshold` - CPU credit balance threshold (default: `30`). Only used for `db.t*` instance types
+- `alarm_database_connections_threshold` - DatabaseConnections alarm threshold (default: `90`). Tune to ~80% of instance `max_connections` (`LEAST(DBInstanceClassMemory/9531392, 5000)`)
 - `alarm_actions` - List of ARNs to be notified via CloudWatch when alarm enters ALARM state
 - `ok_actions` - List of ARNs to be notified via CloudWatch when alarm enters OK state
 - `insufficient_data_actions` - List of ARNs to be notified via CloudWatch when alarm enters INSUFFICIENT_DATA state

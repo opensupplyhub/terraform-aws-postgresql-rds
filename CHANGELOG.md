@@ -1,3 +1,9 @@
+## 3.3.0
+
+- Add a CloudWatch alarm for RDS `DatabaseConnections`, configurable via
+  `alarm_database_connections_threshold` (default `90`, ~80% of
+  `db.t3.micro` default `max_connections`). Override per instance class.
+
 ## 3.0.0
 
 - Add support for Terraform 0.12; 0.12 is now the minimum supported version.
