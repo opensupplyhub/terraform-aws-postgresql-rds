@@ -206,6 +206,12 @@ variable "alarm_cpu_credit_balance_threshold" {
   description = "CPU credit balance threshold (only for db.t* instance types)"
 }
 
+variable "alarm_database_connections_threshold" {
+  default     = 90
+  type        = number
+  description = "DatabaseConnections alarm threshold. Tune per instance class (~80% of max_connections from LEAST(DBInstanceClassMemory/9531392, 5000))"
+}
+
 variable "alarm_actions" {
   type        = list
   description = "List of ARNs to be notified via CloudWatch when alarm enters ALARM state"

@@ -190,3 +190,23 @@ resource "aws_cloudwatch_metric_alarm" "database_cpu_credits" {
   ok_actions                = var.ok_actions
   insufficient_data_actions = var.insufficient_data_actions
 }
+
+resource "aws_cloudwatch_metric_alarm" "database_connections" {
+  alarm_name          = "alarm${var.environment}DatabaseServerDatabaseConnections-${var.database_identifier}"
+  alarm_description   = "Database server connection count"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "DatabaseConnections"
+  namespace           = "AWS/RDS"
+  period              = "60"
+  statistic           = "Average"
+  threshold           = var.alarm_database_connections_threshold
+
+  dimensions = {
+    DBInstanceIdentifier = aws_db_instance.postgresql.identifier
+  }
+
+  alarm_actions             = var.alarm_actions
+  ok_actions                = var.ok_actions
+  insufficient_data_actions = var.insufficient_data_actions
+}

@@ -1,3 +1,22 @@
+## 3.3.0
+
+- Add a CloudWatch alarm for RDS `DatabaseConnections`, configurable via
+  `alarm_database_connections_threshold` (default `90`, ~80% of
+  `db.t3.micro` default `max_connections`). Override per instance class.
+
+## 3.2.0
+
+- Upgrade default PostgreSQL engine version from 13 to 16.
+- Update default parameter group from `default.postgres13` to
+  `default.postgres16`.
+
+## 3.1.0
+
+- Add `allow_major_version_upgrade` and `apply_immediately` variables
+  (both default `false`).
+- Upgrade default PostgreSQL engine version from 11.5 to 13 and default
+  parameter group from `default.postgres11` to `default.postgres13`.
+
 ## 3.0.0
 
 - Add support for Terraform 0.12; 0.12 is now the minimum supported version.
